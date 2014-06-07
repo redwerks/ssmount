@@ -13,7 +13,7 @@ ssmount:
 ## Getting Started
 Ensure you have [node.js](http://nodejs.org/) installed.
 
-Install the ssmount command with: `sudo npm install ssmount -g`
+Install the ssmount command with: `npm install ssmount -g` (you will probably need to use `sudo` or change ownership of `/usr/local`)
 
 ## License
 Copyright (c) 2014 – Redwerks Systems Inc.
