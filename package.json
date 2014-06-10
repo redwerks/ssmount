@@ -34,7 +34,7 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "ssmount": "lib/ssmount.js"
+    "ssmount": "bin/ssmount.js"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
