@@ -31,7 +31,9 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "preferGlobal": "true",
   "bin": {
     "ssmount": "bin/ssmount.js"
