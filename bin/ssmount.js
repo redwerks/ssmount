@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
+process.bin = process.title = 'ssmount';
+
 var ssmount = require('../lib/ssmount');
 
 try {
