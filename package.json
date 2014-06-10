@@ -28,13 +28,12 @@
       "url": "https://github.com/redwerks/ssmount/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/ssmount",
   "engines": {
     "node": ">= 0.8.0"
   },
   "preferGlobal": "true",
   "bin": {
-    "ssmount": "lib/ssmount.js"
+    "ssmount": "bin/ssmount.js"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
