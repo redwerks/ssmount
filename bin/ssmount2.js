@@ -3,7 +3,8 @@
 
 process.bin = process.title = 'ssmount2';
 
-var argparse = require('../lib/argparse');
+var argparse = require('../lib/argparse'),
+	commands = require('../lib/commands');
 
 var args = argparse()
 	.parse({
@@ -31,4 +32,19 @@ if ( args.get('version') ) {
 	cmd = 'version';
 }
 
-console.log(args);
+if ( args.get('help') ) {
+	// @todo Implement --help
+}
+
+if ( !cmd ) {
+	// @todo Implement usage
+	process.exit();
+}
+
+var command = commands.get(cmd);
+if ( command ) {
+	command.action();
+} else {
+	// @todo Implement unknown command message
+	process.exit(1);
+}
