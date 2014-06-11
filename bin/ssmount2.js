@@ -43,6 +43,10 @@ if ( !cmd ) {
 
 var command = commands.get(cmd);
 if ( command ) {
+	if ( command.options ) {
+		args.parse(command.options);
+	}
+
 	command.action(args);
 } else {
 	console.error("ssmount: '%s' is not a ssmount command.", cmd);
