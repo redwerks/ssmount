@@ -45,6 +45,7 @@ var command = commands.get(cmd);
 if ( command ) {
 	command.action();
 } else {
-	// @todo Implement unknown command message
+	console.error("ssmount: '%s' is not a ssmount command.", cmd);
+	// @todo Insert usage
 	process.exit(1);
 }
