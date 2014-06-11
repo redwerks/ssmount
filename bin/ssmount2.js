@@ -43,6 +43,11 @@ if ( !cmd ) {
 
 var command = commands.get(cmd);
 if ( command ) {
+	if ( command.available === false ) {
+		console.error("error: the '%s' command is not available", cmd);
+		process.exit(1);
+	}
+
 	if ( command.options ) {
 		try {
 			args.parse(command.options);
