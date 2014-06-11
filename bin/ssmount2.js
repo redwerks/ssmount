@@ -66,7 +66,7 @@ if ( command ) {
 		}
 	}
 } else {
-	console.error("ssmount: '%s' is not a ssmount command.", cmd);
+	console.error("error: '%s' is not a ssmount command.", cmd);
 	// @todo Insert usage
 	process.exit(1);
 }
