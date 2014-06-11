@@ -43,7 +43,7 @@ if ( !cmd ) {
 
 var command = commands.get(cmd);
 if ( command ) {
-	command.action();
+	command.action(args);
 } else {
 	console.error("ssmount: '%s' is not a ssmount command.", cmd);
 	// @todo Insert usage
