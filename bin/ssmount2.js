@@ -47,7 +47,15 @@ if ( command ) {
 		args.parse(command.options);
 	}
 
-	command.action(args);
+	try {
+		command.action(args);
+	} catch ( e ) {
+		if ( e.exit ) {
+			process.exit(1);
+		} else {
+			throw e;
+		}
+	}
 } else {
 	console.error("ssmount: '%s' is not a ssmount command.", cmd);
 	// @todo Insert usage
