@@ -3,7 +3,8 @@
 
 process.bin = process.title = 'ssmount2';
 
-var argparse = require('../lib/argparse'),
+var S = require('string'),
+	argparse = require('../lib/argparse'),
 	commands = require('../lib/commands');
 
 var args = argparse()
@@ -37,7 +38,22 @@ if ( args.get('help') ) {
 }
 
 if ( !cmd ) {
-	// @todo Implement usage
+	var usage = [];
+	usage.push('');
+	usage.push('  Usage: ' + process.title + ' [options] [command]');
+	usage.push('');
+	usage.push('  Commands:');
+	usage.push('');
+	commands.forEach(function(command) {
+		var line = '    ' + S(command.name).padRight(20).s + ' ' + command.description;
+		usage.push(line);
+	});
+	usage.push('');
+	usage.push('  Options:');
+	usage.push('');
+	usage.push('');
+	usage.push('');
+	console.log(usage.join('\n'));
 	process.exit();
 }
 
