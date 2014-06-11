@@ -44,7 +44,16 @@ if ( !cmd ) {
 var command = commands.get(cmd);
 if ( command ) {
 	if ( command.options ) {
-		args.parse(command.options);
+		try {
+			args.parse(command.options);
+		} catch ( e ) {
+			if ( e.name === 'RequiredOptionError' ) {
+				console.error("error: %s", e.message);
+				process.exit(1);
+			} else {
+				throw e;
+			}
+		}
 	}
 
 	try {
