@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		markedman: {
 			options: {
 				version: '<%= pkg.version %>',
-				name: '<%= pkg.nam %>',
+				name: '<%= pkg.name %>',
 				section: '1'
 			},
 			ssmount: {
