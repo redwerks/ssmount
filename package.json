@@ -48,6 +48,7 @@
     "grunt-markedman": "^1.0.0"
   },
   "dependencies": {
+    "abbrev": "^1.0.5",
     "cli-argparse": "^0.3.6",
     "collections": "^1.1.0",
     "lodash": "^2.4.1",
