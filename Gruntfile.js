@@ -3,6 +3,8 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -18,6 +20,22 @@ module.exports = function(grunt) {
 			},
 		},
 
+		markedman: {
+			options: {
+				version: '<%= pkg.version %>',
+				name: '<%= pkg.nam %>',
+				section: '1'
+			},
+			ssmount: {
+				files: [
+					{
+						src: 'man/ssmount.md',
+						dest: 'man/ssmount.1'
+					}
+				]
+			},
+		},
+
 		watch: {
 			gruntfile: {
 				files: '<%= jshint.gruntfile.src %>',
@@ -30,11 +48,18 @@ module.exports = function(grunt) {
 			lib: {
 				files: '<%= jshint.lib.src %>',
 				tasks: ['jshint:lib']
-			}
+			},
+			man: {
+				files: 'man/*.md',
+				tasks: ['markedman']
+			},
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-markedman');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+
+	grunt.registerTask('man', ['markedman']);
 
 };

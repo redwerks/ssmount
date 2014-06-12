@@ -1,0 +1,42 @@
+.TH "SSMOUNT" "1" "June 2014" "0.3.0" ""
+.SH "NAME"
+\fBssmount\fR \- save and mount sshfs mounts
+.SH SYNOPSIS
+.P
+ssmount <command> [options]
+.SH DESCRIPTION
+.P
+ssmount is a simple tool for remembering and mounting SSHFS mount points you use regularly on OSX\.
+.RS 0
+.IP \(bu 2
+ssmount lets you \fBssmount add\fR SSHFS mounts you use regularly\.
+.IP \(bu 2
+Allows you to mount them by simple names with \fBmounts mount <name>\fR\|\.
+.IP \(bu 2
+By default, passes options to sshfs that allow permissions to work correctly when the server uses ACLs\.
+
+.RE
+.P
+Run \fBssmount help\fR to get a list of available commands,
+and \fBssmount help <command>\fR to get information on an individual command\.
+.SH HISTORY
+.P
+For work I (Daniel) usually make use of OSX and I often have to mount specific directories from our servers to work on staging sites or client projects remotely\. I've had issues in the past getting things like Transmit to mount disks so I've been using SSHFS\. However because this works in the terminal and we use ACLs on the server which requires some extra options passed to the sshfs command, mounting things to work on has become tedious\.
+.P
+So I created ssmount so I could save the SSHFS mount points I use regularly and mount them when I need them\.
+.SH BUGS
+.P
+When you find issues, please report them:
+.RS 0
+.IP \(bu 2
+web: \fIhttps://github\.com/redwerks/ssmount/issues\fR
+
+.RE
+.SH AUTHOR
+.RS 0
+.IP \(bu 2
+Daniel Friesen \fIhttp://danielfriesen\.name/\fR
+.IP \(bu 2
+Redwerks Systems Inc\. \fIhttp://redwerks\.org/\fR
+
+.RE

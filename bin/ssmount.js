@@ -3,7 +3,8 @@
 
 process.bin = process.title = 'ssmount';
 
-var argparse = require('../lib/argparse'),
+var Q = require('q'),
+	argparse = require('../lib/argparse'),
 	commands = require('../lib/commands'),
 	help = require('../lib/commands/help'),
 	options = require('../lib/common-cli-options');
@@ -52,15 +53,15 @@ if ( command ) {
 		}
 	}
 
-	try {
-		command.action(args);
-	} catch ( e ) {
-		if ( e.exit ) {
-			process.exit(1);
-		} else {
-			throw e;
-		}
-	}
+	Q.fcall(command.action, args)
+		.fail(function(e) {
+			if ( e.exit ) {
+				process.exit(1);
+			} else {
+				throw e;
+			}
+		})
+		.done();
 } else {
 	console.error("error: '%s' is not a ssmount command.", cmd);
 	help.basicUsage();
