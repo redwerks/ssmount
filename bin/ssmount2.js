@@ -3,64 +3,38 @@
 
 process.bin = process.title = 'ssmount2';
 
-var S = require('string'),
-	argparse = require('../lib/argparse'),
-	commands = require('../lib/commands');
+var argparse = require('../lib/argparse'),
+	commands = require('../lib/commands'),
+	help = require('../lib/commands/help'),
+	options = require('../lib/common-cli-options');
 
-var args = argparse()
-	.parse({
-		config: {
-			type: 'string',
-			short: 'c'
-		},
-		version: {
-			type: 'bool',
-			short: 'V',
-		},
-		help: {
-			type: 'bool',
-			short: 'h'
-		},
-		command: {
-			type: 'string',
-			named: false,
-			position: 0
-		}
-	}),
+var args = argparse().parse(options),
 	cmd = args.get('command');
+
+if ( args.get('help') ) {
+	cmd = 'help';
+
+	// Push any real command back into the unparsed stuff
+	if ( args.options.get('command') ) {
+		args.remaining.unshift(args.options.get('command'));
+		args.options.delete('command');
+	}
+}
 
 if ( args.get('version') ) {
 	cmd = 'version';
 }
 
-if ( args.get('help') ) {
-	// @todo Implement --help
-}
-
 if ( !cmd ) {
-	var usage = [];
-	usage.push('');
-	usage.push('  Usage: ' + process.title + ' [options] [command]');
-	usage.push('');
-	usage.push('  Commands:');
-	usage.push('');
-	commands.forEach(function(command) {
-		var line = '    ' + S(command.name).padRight(20).s + ' ' + command.description;
-		usage.push(line);
-	});
-	usage.push('');
-	usage.push('  Options:');
-	usage.push('');
-	usage.push('');
-	usage.push('');
-	console.log(usage.join('\n'));
-	process.exit();
+	// Display usage information by default
+	cmd = 'help';
 }
 
 var command = commands.get(cmd);
 if ( command ) {
 	if ( command.available === false ) {
 		console.error("error: the '%s' command is not available", cmd);
+		help.basicUsage();
 		process.exit(1);
 	}
 
@@ -70,6 +44,7 @@ if ( command ) {
 		} catch ( e ) {
 			if ( e.name === 'RequiredOptionError' ) {
 				console.error("error: %s", e.message);
+				help.commandUsage(command);
 				process.exit(1);
 			} else {
 				throw e;
@@ -88,6 +63,6 @@ if ( command ) {
 	}
 } else {
 	console.error("error: '%s' is not a ssmount command.", cmd);
-	// @todo Insert usage
+	help.basicUsage();
 	process.exit(1);
 }
