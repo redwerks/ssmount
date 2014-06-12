@@ -2,7 +2,7 @@
   "name": "ssmount",
   "description": "A simple tool for remembering and mounting SSHFS mount points you use regularly on OSX.",
   "keywords": [],
-  "version": "0.3.1",
+  "version": "0.4.0",
   "homepage": "https://github.com/redwerks/ssmount",
   "author": {
     "name": "Redwerks Systems Inc.",
@@ -41,6 +41,9 @@
   "directories": {
     "man": "./man"
   },
+  "scripts": {
+    "prepublish": "grunt prepublish"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.6.4",
@@ -48,6 +51,7 @@
     "grunt-markedman": "^1.0.0"
   },
   "dependencies": {
+    "abbrev": "^1.0.5",
     "cli-argparse": "^0.3.6",
     "collections": "^1.1.0",
     "lodash": "^2.4.1",
