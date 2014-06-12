@@ -38,10 +38,14 @@
   "bin": {
     "ssmount": "bin/ssmount.js"
   },
+  "directories": {
+    "man": "./man"
+  },
   "devDependencies": {
+    "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt": "~0.4.5"
+    "grunt-markedman": "^1.0.0"
   },
   "dependencies": {
     "cli-argparse": "^0.3.6",
