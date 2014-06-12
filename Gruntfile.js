@@ -62,4 +62,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('man', ['markedman']);
 
+	grunt.registerTask('prepublish', ['man']);
+
 };
