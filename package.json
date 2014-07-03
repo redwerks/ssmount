@@ -2,7 +2,7 @@
   "name": "ssmount",
   "description": "A simple tool for remembering and mounting SSHFS mount points you use regularly on OSX.",
   "keywords": [],
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/redwerks/ssmount",
   "author": {
     "name": "Redwerks Systems Inc.",
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "abbrev": "^1.0.5",
-    "cli-argparse": "^0.3.6",
+    "cli-argparse": "^0.3.7",
     "collections": "^1.1.0",
     "lodash": "^2.4.1",
     "mkdirp": "^0.5.0",
